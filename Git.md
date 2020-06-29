@@ -30,7 +30,7 @@
 
 ### Initializing a Repository in an Existing Directory
 
-* Running ``git init`` in a directory not under version control will create a directory called ``.git`` containing repository files, initializing the directory as a git repository.
+* Running ``git init`` in a directory not under version control creates ``.git``. A directory containing repository files which initializes the directory as a git repository.
 *  *NOTE* - See [sidenote](###What Happens If I run Git Init Twice?) on what happens if you run ``git init`` in an already initialized repository.
 
 ### Cloning an Existing Repository
@@ -39,6 +39,37 @@
   * Initializes `.git` directory inside it, pulls all data and checks out a working latest working copy.
 * Copies a full working copy with almost all data server has e.g every version for all files. 
 * via HTTPS, SSH, [etc.](https://git-scm.com/book/en/v2/ch00/_getting_git_on_a_server) 
+
+### Checking Status of Your Files
+
+* ``git status`` Checks state of files and current working branch. 
+
+* Files can be untracked(Not in last snapshot/staging area) or tracked (modified, unmodified, staged)
+
+### Tracking New Files & Staging Modified Files
+
+* ``git add <target>`` tracks or stages a file/directory(recursively) to be staged, mark merge-conflict files resolved, etc.
+
+Short Status
+
+* ``git status -s`` or ``git status --short``
+
+Ignoring Files
+
+* File named ``.gitignore`` 
+
+Skipping The Staging Area
+
+* Adding ``-a`` flag to your next commit makes git automatically stage every file that is already tracked.
+
+Removing Files
+
+* Removing a file with ``rm`` makes the state of the file deleted and this change is unstaged. To properly stage a file removal, use ``git rm <target>``
+* If file modified/staged, cannot be removed so we have to use ``git rm -f <target>`` This allows the prevention of lost staged data which can't be recovered by git. 
+
+Moving Files
+
+* ``git mv <file_name> <new_file_name>`` renames a file, removes the old filename from the cache and stages the new file as a rename. This is useful vs. doing those three steps systematically. 
 
 ## Sidenotes 
 
